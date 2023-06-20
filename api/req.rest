@@ -1,0 +1,29 @@
+GET http://localhost:5003/tasks 
+
+###
+
+POST  http://localhost:5003/tasks/new 
+Content-Type: application/json
+
+{
+    "id" : "01",
+    "description":"less gooo"
+}
+
+###
+POST  http://localhost:5003/tasks/new 
+Content-Type: application/json
+
+{
+    "id" : "02",
+    "description":"hellooooooo"
+}
+
+###
+POST  http://localhost:5003/tasks/new 
+Content-Type: application/json
+
+{
+    "id" : "03",
+    "description":"get the book"
+}
