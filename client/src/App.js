@@ -11,25 +11,49 @@ function App() {
     console.log("use effect");
   }, []);
 
+  //Get Tasks
   const GetTasks = () => {
-    // console.log("inside get ")
     fetch(API + "/tasks")
       .then((res) => res.json())
       .then((data) => setTasks(data))
       .catch((err) => console.log(err));
-    // console.log("after get")
   };
 
   //Add Task
-  const addTask =(task)=>{
-    console.log(task)
+  const addTask = async (task) => {
+    const res = await fetch(API + "/tasks/new", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(task),
+    });
+    const data = await res.json();
+    res.status===200?
+    setTasks([...tasks, data]):alert('Error adding the task');
+  };
 
-  }
+  //Edit the task
+  const editTask = async (task) => {
+    const res = await fetch(API + "/tasks/edit/id", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(task),
+    });
+    const data = await res.json();
+    res.status===200?
+    setTasks([...tasks, data]):alert('Error adding the task');
+  };
 
   //Delete task
-
-  const deleteTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id));
+  const deleteTask = async (id) => {
+    const data = await fetch(API + "/tasks/delete/" + id, {
+      method: "DELETE",
+    }).then((res) => res.json());
+   
+    setTasks((tasks) => tasks.filter((task) => task.id !== data.id));
   };
 
   return (

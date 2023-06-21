@@ -1,12 +1,14 @@
 const mongoose = require('mongoose')
 
 const TasksSchema = new mongoose.Schema({
-    id:{
+    taskId:{
         type :String,
-        required: true
+       // required: true,
+      //  default : 0
     },
-    Name:{
-        type :String,   
+    name:{
+        type :String,
+        required: true   
     },
     description:
     {
@@ -16,27 +18,28 @@ const TasksSchema = new mongoose.Schema({
     startDate:
     {
         type :Date,
-        default : Date.now
+        default : Date.now,
+        //required: true
     },
     endDate:{
         type : Date,
-        default : Date.now.toString()
+        default : Date.now,
+       // required: true
 
     },
     status:{
         type : String,
-        default: false
+       // default: "Pending",
+       // required : true
     },
     priority:{
-        type :Number
+        type :String,
+       // required : true
     },
     ownerName:{
-        type :String
-    },
-    reminder:{
-        type:Boolean,
-        default:true,
-        required : true
+        type :String,
+       // required: true,
+      //  default :""
     }
 
 })

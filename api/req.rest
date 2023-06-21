@@ -7,6 +7,7 @@ Content-Type: application/json
 
 {
     "id" : "01",
+    "name" :"shab",
     "description":"less gooo"
 }
 
@@ -27,3 +28,7 @@ Content-Type: application/json
     "id" : "03",
     "description":"get the book"
 }
+
+###
+
+DELETE http://localhost:5003/tasks/delete/64912f75a099eac0b699737c
